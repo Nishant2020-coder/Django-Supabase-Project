@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Article Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: sans-serif; display: grid; place-items: center; }
+        .chart-container { width: 80%; max-width: 800px; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <h1>Article Report</h1>
+    <h3>Article Count by Author</h3>
+
+    <div class="chart-container">
+        <canvas id="authorChart"></canvas>
+    </div>
+
+    <script>
+        // 3. Get the data from our Django view
+        // We use the |safe filter to render the Python lists as JavaScript arrays
+        const labels = {{ labels|safe }};
+        const dataValues = {{ values|safe }};
+
+        // 4. Chart.js configuration
+        const ctx = document.getElementById('authorChart').getContext('2d');
+        const authorChart = new Chart(ctx, {
+            type: 'bar', // Type of chart
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '# of Articles',
+                    data: dataValues,
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
