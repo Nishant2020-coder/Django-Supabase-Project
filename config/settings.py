@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '.vercel.app',
     os.getenv('VERCEL_URL'),
+    'django-supabase-project-5y916l3e3-nishant-shandilya-s-projects.vercel.app',
 ]
 
 
