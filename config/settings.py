@@ -32,8 +32,9 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
+    '0.0.0.0',
     '.vercel.app',
-    os.getenv('VERCEL_URL'),
+    'django-supabase-project.vercel.app',
     'django-supabase-project-5y916l3e3-nishant-shandilya-s-projects.vercel.app',
 ]
 
